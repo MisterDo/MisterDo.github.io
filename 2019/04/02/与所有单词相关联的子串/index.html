@@ -2,20 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签 - MisterDo</title>
+<title>30.Substring with Concatenation of All Words - MisterDo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="jvm,leetcode">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MisterDo">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+    <meta name="description" content="题目描述：与所有单词相关联的子串给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：    在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="30.Substring with Concatenation of All Words">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/与所有单词相关联的子串/index.html">
 <meta property="og:site_name" content="MisterDo">
+<meta property="og:description" content="题目描述：与所有单词相关联的子串给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：    在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-04-02T15:55:57.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MisterDo">
+<meta name="twitter:title" content="30.Substring with Concatenation of All Words">
+<meta name="twitter:description" content="题目描述：与所有单词相关联的子串给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：    在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="MisterDo" height="28">
+                <img src="/images/logo.svg" alt="30.Substring with Concatenation of All Words" height="28">
             
             </a>
         </div>
@@ -104,7 +108,7 @@
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
-                <a class="navbar-item is-active" href="/tags">Tags</a>
+                <a class="navbar-item" href="/tags">Tags</a>
                 
                 <a class="navbar-item" href="/about">About</a>
                 
@@ -135,32 +139,174 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-02T15:42:54.706Z">2019-04-02</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jvm/">
-                        <span class="tag">jvm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/leetcode/">
-                        <span class="tag">leetcode</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 464 个字)
+                </span>
+                
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                30.Substring with Concatenation of All Words
+            
+        </h1>
+        <div class="content">
+            <h1 id="题目描述：与所有单词相关联的子串"><a href="#题目描述：与所有单词相关联的子串" class="headerlink" title="题目描述：与所有单词相关联的子串"></a>题目描述：<a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words" target="_blank" rel="noopener">与所有单词相关联的子串</a></h1><p>给定一个子串s和一些长度相同的单词组成的字符串数组words.<br><strong>注意：</strong><br>    在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.<br> <a id="more"></a></p>
+<p><font color="color"><strong>示例1：(允许无序)</strong></font></p>
+<pre><code class="java">
+Input:
+  s = &quot;barfoothefoobarman&quot;,
+  words = [&quot;foo&quot;,&quot;bar&quot;]
+Output: [0,9]
+
+</code></pre>
+<p><font color="color"><strong>示例2：(中间不能有其他字符)</strong></font></p>
+<pre><code class="java">
+Input:
+  s = &quot;wordgoodgoodgoodbestword&quot;,
+  words = [&quot;word&quot;,&quot;good&quot;,&quot;best&quot;,&quot;word&quot;]
+Output: []
+
+</code></pre>
+<p><font color="color"><strong>示例3：</strong></font></p>
+<pre><code class="java">
+Input:
+  s = &quot;oooooo&quot;,
+  words = [&quot;oo&quot;,&quot;oo&quot;]
+Output: [0,1,2]
+
+</code></pre>
+<p><font color="red">由题意，我们可以得到以下几点信息：</font></p>
+<ul>
+<li>找到的子串长度等于给定单词数组长度与其中单个字符串长度的乘积</li>
+<li>单词数组里面允许出现重复的单词</li>
+<li>子串之间是可以叠加出现的（示例3）</li>
+</ul>
+<h2 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h2><ol>
+<li>首先，我们可以得到words中单个字符的长度，设为<font color="red">wLen</font>,words字符串数组的长度为<font color="red">wordsLen</font>;</li>
+<li>找到的子串长度必定为<font color="red">wLen * wordsLen</font>;</li>
+<li>遍历给定字符串,长度为<font color="red">sLen</font>,可以得到<font color="red">sLen-wLen * wordsLen+1</font>个子串;</li>
+<li>遍历时，将长度为<font color="red">wLen * wordsLen</font>的子串等均等拆分为字符串数组,每个字符串长度为<font color="red">wLen</font>;</li>
+<li>将上一步得到的字符串数组进行排序，给定的words也要进行排序，这时候，如果两个字符串数组的内容一样，则该子串符合要求，将子串对应的索引添加到返回的结果数组中.</li>
+</ol>
+<h3 id="java源程序："><a href="#java源程序：" class="headerlink" title="java源程序："></a>java源程序：</h3><pre><code class="java">
+    class Solution {
+    public List&lt;Integer&gt; findSubstring(String s, String[] words) {
+        int sLen = s.length();
+        int unit = words.length;
+        List&lt;Integer&gt; res = new LinkedList&lt;&gt;();
+        if(unit==0 || sLen==0) return res;
+        int wLen = words[0].length();
+
+        int wordsLen = unit*wLen;
+
+        Arrays.sort(words);
+        for(int i=0;i&lt;sLen-wordsLen+1;i++){           
+            String sub = s.substring(i,i+wordsLen);
+            if(isSubstring(sub,unit,wLen,words)){
+                res.add(i);
+            }
+        }
+        return res;
+    }
+
+    public boolean isSubstring(String sub,int unit,int wLen,String[] words){
+
+        String[] temp = new String[unit];
+        for(int i=0,k=0;i&lt;unit;i++){
+            temp[i] = sub.substring(k,k+wLen);
+            k = k+wLen;  
+        }
+        Arrays.sort(temp);
+        return Arrays.equals(temp,words);
+    }
+}
+
+</code></pre>
+<p>当然，这样的算法属于一种暴力求解，复杂度最佳和最差都是<font>n * log<sub>2</sub>(n)</font>&gt;<br>如下图：<br><img src="images/picture/30_1.PNG" alt="avatar"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/leetcode/">leetcode</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/31/我的第一篇篇博客/">
+                <span class="level-item">深入理解java虚拟机</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -585,7 +731,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="MisterDo" height="28">
+                    <img src="/images/logo.svg" alt="30.Substring with Concatenation of All Words" height="28">
                 
                 </a>
                 <p class="is-size-7">
