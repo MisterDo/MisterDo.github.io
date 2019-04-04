@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: leetcode - MisterDo</title>
+<title>30.Substring with Concatenation of All Words(续) - MisterDo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="MisterDo">
-<meta property="og:url" content="http://yoursite.com/tags/leetcode/index.html">
+    <meta name="description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序. 上篇我们讨论了本题的一种暴力求解法，本篇">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="30.Substring with Concatenation of All Words(续)">
+<meta property="og:url" content="http://yoursite.com/2019/04/03/与所有单词相关联的子串(续)/index.html">
 <meta property="og:site_name" content="MisterDo">
+<meta property="og:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序. 上篇我们讨论了本题的一种暴力求解法，本篇">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-04-03T15:32:00.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MisterDo">
+<meta name="twitter:title" content="30.Substring with Concatenation of All Words(续)">
+<meta name="twitter:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序. 上篇我们讨论了本题的一种暴力求解法，本篇">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="MisterDo" height="28">
+                <img src="/images/logo.svg" alt="30.Substring with Concatenation of All Words(续)" height="28">
             
             </a>
         </div>
@@ -135,17 +140,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">leetcode</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -166,83 +160,150 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/04/03/与所有单词相关联的子串(续)/">30.Substring with Concatenation of All Words(续)</a>
+                30.Substring with Concatenation of All Words(续)
             
         </h1>
         <div class="content">
             <h1 id="题目描述：与所有单词相关联的子串"><a href="#题目描述：与所有单词相关联的子串" class="headerlink" title="题目描述：与所有单词相关联的子串"></a>题目描述：<a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words" target="_blank" rel="noopener">与所有单词相关联的子串</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.<br><strong>注意：</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.</p>
-<p>上篇我们讨论了本题的一种暴力求解法，本篇接着讨论另外两种优化的解法.<br></p>
+<p>上篇我们讨论了本题的一种暴力求解法，本篇接着讨论另外两种优化的解法.<br><a id="more"></a></p>
+<p><hr></p>
+<h2 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本方法遍历子串时，同解法一不同之处在于，子串与给定单词字符串数组words的匹配规则不同.解法一是利用子串组成的数组和给定words的排序结果的内容相同来判断子串是否满足要求;而解法二利用了map，首先将words中单词与单词频次转化为key-value的形式，遍历s时得到的子串按同理存于另一个map里面，判断这两个map是否相等，以此决定该子串是否满足要求。</p>
+<p><hr></p>
+<h3 id="java源程序："><a href="#java源程序：" class="headerlink" title="java源程序："></a>java源程序：</h3><pre><code class="java">class Solution {
+    public List&lt;Integer&gt; findSubstring(String s, String[] words) {
+        int sLen = s.length();
+        int unit = words.length;
+        List&lt;Integer&gt; res = new LinkedList&lt;&gt;();
+        if(unit==0 || sLen==0) return res;
+        int wLen = words[0].length();
+        int wordsLen = unit*wLen;
+        Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;();
+
+        for(String word:words){
+            map.put(word,map.getOrDefault(word,0)+1);
+
+        }
+
+        for(int i=0;i&lt;sLen-wordsLen+1;i++){
+            Map&lt;String,Integer&gt; temp = new HashMap&lt;&gt;(map);
+            int j=0;
+            for(;j&lt;unit;j++){
+                String sub = s.substring(i+j*wLen,i+(j+1)*wLen);
+                if(!temp.containsKey(sub)||temp.get(sub)==0) break;
+                temp.put(sub,temp.get(sub)-1);
+
+            }
+            if(j==unit) res.add(i);
+
+        }
+    }
+}
+
+</code></pre>
+<p><hr></p>
+<h2 id="解法三："><a href="#解法三：" class="headerlink" title="解法三："></a>解法三：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解法三与解法二判断子串和words是否匹配的方法一样，但是遍历子串的方式有所不同.在第一层循环中，以一个字符为单位，遍历次数为wLen,在第二层循环中，以wLen为一单位，比较当前子串第一个长度为wLen的单词与其后长度为wLen的单词是否相同，相同就维持未来字符串不变，这样，如果匹配成功的话，索引位置就对应于子串首次出现的位置;如果不同，删除子串第一个单词，加入子串后的一个单词，形成一个新的子串.两层循环下，可以将所有的情况遍历完，重要的是，第二层循环的处理减少了map的频繁操作，从而降低了时间的复杂度。</p>
+<p><hr></p>
+<h3 id="java源程序：-1"><a href="#java源程序：-1" class="headerlink" title="java源程序："></a>java源程序：</h3><pre><code class="java">class Solution {
+    public List&lt;Integer&gt; findSubstring(String s, String[] words) {
+        int sLen = s.length();
+        int unit = words.length;
+        List&lt;Integer&gt; res = new LinkedList&lt;&gt;();
+        if(unit==0 || sLen==0) return res;
+        int wLen = words[0].length();
+        int wordsLen = unit*wLen;
+        Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;();
+        for(String word:words){
+            map.put(word,map.getOrDefault(word,0)+1);
+        }
+        for(int i=0;i&lt;wLen;i++){
+            Map&lt;String,Integer&gt; temp = new HashMap&lt;&gt;();
+            for(int k=0;k&lt;unit&amp;&amp;i+(k+1)*wLen&lt;=sLen;k++){
+                String sub = s.substring(i+k*wLen,i+(k+1)*wLen);
+                temp.put(sub,temp.getOrDefault(sub,0)+1);
+            }
+            if(map.equals(temp)) res.add(i);
+            for(int j=i+wordsLen;j+wLen&lt;=sLen;j+=wLen){
+                String start = s.substring(i,i+wLen);
+                String end = s.substring(j,j+wLen);
+                temp.put(end,temp.getOrDefault(end,0)+1);
+                if(temp.get(start)==1) temp.remove(start);
+                else temp.put(start,temp.get(start)-1);
+                i += wLen;
+                if(map.equals(temp)) res.add(i);
+            }
+            i%=wLen;
+        }
+        return res;
+    }   
+}
+</code></pre>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/03/与所有单词相关联的子串(续)/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/leetcode/">leetcode</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
 
 
 
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-02T15:42:54.706Z">2019-04-02</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 453 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/2019/04/02/与所有单词相关联的子串/">30.Substring with Concatenation of All Words</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="题目描述：-与所有单词相关联的子串"><a href="#题目描述：-与所有单词相关联的子串" class="headerlink" title="题目描述：[与所有单词相关联的子串"></a>题目描述：[与所有单词相关联的子串<a href=""></a></h1><p>给定一个子串s和一些长度相同的单词组成的字符串数组words.<br><strong>注意：</strong><br>在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.</p>
-<p><font color="color"><strong>示例1：(允许无序)</strong></font><br>‘’’java</p>
-<p>Input:<br>  s = “barfoothefoobarman”,<br>  words = [“foo”,”bar”]<br>Output: [0,9]</p>
-<p>‘’’<br></p>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.jpg" alt="微信"></div>
+</a>
+
+                
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/02/与所有单词相关联的子串/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
 
 
 
-
-
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/02/与所有单词相关联的子串/">
+                <span class="level-item">30.Substring with Concatenation of All Words</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -708,7 +769,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="MisterDo" height="28">
+                    <img src="/images/logo.svg" alt="30.Substring with Concatenation of All Words(续)" height="28">
                 
                 </a>
                 <p class="is-size-7">
