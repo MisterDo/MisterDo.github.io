@@ -2,25 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>30.Substring with Concatenation of All Words(续) - MisterDo</title>
+<title>30.Substring With Concatenation of All Words(续) - MisterDo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序. 上篇我们讨论了本题的一种暴力求解法，本篇">
+    <meta name="description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.上篇我们讨论了本题的一种暴力求解法，本篇接">
 <meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="30.Substring with Concatenation of All Words(续)">
+<meta property="og:title" content="30.Substring With Concatenation of All Words(续)">
 <meta property="og:url" content="http://yoursite.com/2019/04/03/与所有单词相关联的子串(续)/index.html">
 <meta property="og:site_name" content="MisterDo">
-<meta property="og:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序. 上篇我们讨论了本题的一种暴力求解法，本篇">
+<meta property="og:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.上篇我们讨论了本题的一种暴力求解法，本篇接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-03T15:32:00.875Z">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554402971414&di=75211fabd591229a436e4f1a49f68fc9&imgtype=0&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng">
+<meta property="og:updated_time" content="2019-04-04T15:50:44.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="30.Substring with Concatenation of All Words(续)">
-<meta name="twitter:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序. 上篇我们讨论了本题的一种暴力求解法，本篇">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:title" content="30.Substring With Concatenation of All Words(续)">
+<meta name="twitter:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.上篇我们讨论了本题的一种暴力求解法，本篇接">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554402971414&di=75211fabd591229a436e4f1a49f68fc9&imgtype=0&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng">
 
 
 
@@ -84,6 +84,10 @@
     
     
     
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -94,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="30.Substring with Concatenation of All Words(续)" height="28">
+                <img src="/images/logo.svg" alt="30.Substring With Concatenation of All Words(续)" height="28">
             
             </a>
         </div>
@@ -102,15 +106,15 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="/">主页</a>
                 
-                <a class="navbar-item" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">归档</a>
                 
-                <a class="navbar-item" href="/categories">Categories</a>
+                <a class="navbar-item" href="/categories">目录</a>
                 
-                <a class="navbar-item" href="/tags">Tags</a>
+                <a class="navbar-item" href="/tags">标签</a>
                 
-                <a class="navbar-item" href="/about">About</a>
+                <a class="navbar-item" href="/about">关于我</a>
                 
             </div>
             
@@ -141,6 +145,12 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554402971414&amp;di=75211fabd591229a436e4f1a49f68fc9&amp;imgtype=0&amp;src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng" alt="30.Substring With Concatenation of All Words(续)">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -151,21 +161,25 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 773 个字)
+                    5 分钟 读完 (大约 801 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                30.Substring with Concatenation of All Words(续)
+                30.Substring With Concatenation of All Words(续)
             
         </h1>
         <div class="content">
-            <h1 id="题目描述：与所有单词相关联的子串"><a href="#题目描述：与所有单词相关联的子串" class="headerlink" title="题目描述：与所有单词相关联的子串"></a>题目描述：<a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words" target="_blank" rel="noopener">与所有单词相关联的子串</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.<br><strong>注意：</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.</p>
-<p>上篇我们讨论了本题的一种暴力求解法，本篇接着讨论另外两种优化的解法.<br><a id="more"></a></p>
+            <h1 id="题目描述：与所有单词相关联的子串"><a href="#题目描述：与所有单词相关联的子串" class="headerlink" title="题目描述：与所有单词相关联的子串"></a>题目描述：<a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words" target="_blank" rel="noopener">与所有单词相关联的子串</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.<br><strong>注意：</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.<br>上篇我们讨论了本题的一种暴力求解法，本篇接着讨论另外两种优化的解法.<br><a id="more"></a></p>
 <p><hr></p>
 <h2 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本方法遍历子串时，同解法一不同之处在于，子串与给定单词字符串数组words的匹配规则不同.解法一是利用子串组成的数组和给定words的排序结果的内容相同来判断子串是否满足要求;而解法二利用了map，首先将words中单词与单词频次转化为key-value的形式，遍历s时得到的子串按同理存于另一个map里面，判断这两个map是否相等，以此决定该子串是否满足要求。</p>
 <p><hr></p>
@@ -200,6 +214,7 @@
 }
 
 </code></pre>
+<p>运行时间和空间如下图：<br><img src="https://s2.ax1x.com/2019/04/04/ARuYCt.png" alt="解法二时间空间复杂度"></p>
 <p><hr></p>
 <h2 id="解法三："><a href="#解法三：" class="headerlink" title="解法三："></a>解法三：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解法三与解法二判断子串和words是否匹配的方法一样，但是遍历子串的方式有所不同.在第一层循环中，以一个字符为单位，遍历次数为wLen,在第二层循环中，以wLen为一单位，比较当前子串第一个长度为wLen的单词与其后长度为wLen的单词是否相同，相同就维持未来字符串不变，这样，如果匹配成功的话，索引位置就对应于子串首次出现的位置;如果不同，删除子串第一个单词，加入子串后的一个单词，形成一个新的子串.两层循环下，可以将所有的情况遍历完，重要的是，第二层循环的处理减少了map的频繁操作，从而降低了时间的复杂度。</p>
 <p><hr></p>
@@ -237,6 +252,7 @@
     }   
 }
 </code></pre>
+<p>运行时间和空间如下图：<br><img src="https://s2.ax1x.com/2019/04/04/ARuNgf.png" alt="解法三时间空间复杂度"></p>
 
         </div>
         
@@ -297,7 +313,7 @@
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/02/与所有单词相关联的子串/">
-                <span class="level-item">30.Substring with Concatenation of All Words</span>
+                <span class="level-item">30.Substring With Concatenation of All Words</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -333,7 +349,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
     
         
 <div class="card widget">
@@ -357,7 +373,7 @@
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>中国北京</span>
+                        <span>中国,北京</span>
                     </p>
                     
                 </div>
@@ -518,14 +534,14 @@
             
             <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="30.Substring with Concatenation of All Words(续)">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554402971414&amp;di=75211fabd591229a436e4f1a49f68fc9&amp;imgtype=0&amp;src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng" alt="30.Substring With Concatenation of All Words(续)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T15:07:16.076Z">2019-04-03</time></div>
-                    <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="has-link-black-ter is-size-6">30.Substring with Concatenation of All Words(续)</a>
+                    <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="has-link-black-ter is-size-6">30.Substring With Concatenation of All Words(续)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -537,14 +553,14 @@
             
             <a href="/2019/04/02/与所有单词相关联的子串/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554388383126&amp;di=3bd5245361b35d6b67f4bb3c636ad1e5&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F68%2F59%2F71X58PICNjx_1024.jpg" alt="30.Substring with Concatenation of All Words">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554402971414&amp;di=75211fabd591229a436e4f1a49f68fc9&amp;imgtype=0&amp;src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng" alt="30.Substring With Concatenation of All Words">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-02T15:42:54.706Z">2019-04-02</time></div>
-                    <a href="/2019/04/02/与所有单词相关联的子串/" class="has-link-black-ter is-size-6">30.Substring with Concatenation of All Words</a>
+                    <a href="/2019/04/02/与所有单词相关联的子串/" class="has-link-black-ter is-size-6">30.Substring With Concatenation of All Words</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -556,14 +572,14 @@
             
             <a href="/2019/03/31/我的第一篇篇博客/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解java虚拟机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解Java虚拟机">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time></div>
-                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解java虚拟机</a>
+                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -659,14 +675,14 @@
             
             <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="30.Substring with Concatenation of All Words(续)">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554402971414&amp;di=75211fabd591229a436e4f1a49f68fc9&amp;imgtype=0&amp;src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng" alt="30.Substring With Concatenation of All Words(续)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T15:07:16.076Z">2019-04-03</time></div>
-                    <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="has-link-black-ter is-size-6">30.Substring with Concatenation of All Words(续)</a>
+                    <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="has-link-black-ter is-size-6">30.Substring With Concatenation of All Words(续)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -678,14 +694,14 @@
             
             <a href="/2019/04/02/与所有单词相关联的子串/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554388383126&amp;di=3bd5245361b35d6b67f4bb3c636ad1e5&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F68%2F59%2F71X58PICNjx_1024.jpg" alt="30.Substring with Concatenation of All Words">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1554402971414&amp;di=75211fabd591229a436e4f1a49f68fc9&amp;imgtype=0&amp;src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng" alt="30.Substring With Concatenation of All Words">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-02T15:42:54.706Z">2019-04-02</time></div>
-                    <a href="/2019/04/02/与所有单词相关联的子串/" class="has-link-black-ter is-size-6">30.Substring with Concatenation of All Words</a>
+                    <a href="/2019/04/02/与所有单词相关联的子串/" class="has-link-black-ter is-size-6">30.Substring With Concatenation of All Words</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -697,14 +713,14 @@
             
             <a href="/2019/03/31/我的第一篇篇博客/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解java虚拟机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解Java虚拟机">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time></div>
-                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解java虚拟机</a>
+                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -790,12 +806,17 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="30.Substring with Concatenation of All Words(续)" height="28">
+                    <img src="/images/logo.svg" alt="30.Substring With Concatenation of All Words(续)" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 John Doe&nbsp;
+                &copy; 2019 MisterDo&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
                 
                 </p>
             </div>
@@ -927,6 +948,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
     
+    
+
     
 
 
