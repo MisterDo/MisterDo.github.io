@@ -2,21 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类 - MisterDo</title>
+<title>32. Longest Valid Parentheses - MisterDo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="leetcode">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MisterDo">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+    <meta name="description" content="题目描述：最长有效括号给定一个只包含(和)的字符串，找出最长的包含有效的子串的长度。">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="32. Longest Valid Parentheses">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/最长有效括号/index.html">
 <meta property="og:site_name" content="MisterDo">
+<meta property="og:description" content="题目描述：最长有效括号给定一个只包含(和)的字符串，找出最长的包含有效的子串的长度。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg">
+<meta property="og:updated_time" content="2019-04-05T15:26:06.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MisterDo">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:title" content="32. Longest Valid Parentheses">
+<meta name="twitter:description" content="题目描述：最长有效括号给定一个只包含(和)的字符串，找出最长的包含有效的子串的长度。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg">
 
 
 
@@ -95,7 +99,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="MisterDo" height="28">
+                <img src="/images/logo.svg" alt="32. Longest Valid Parentheses" height="28">
             
             </a>
         </div>
@@ -107,7 +111,7 @@
                 
                 <a class="navbar-item" href="/archives">归档</a>
                 
-                <a class="navbar-item is-active" href="/categories">目录</a>
+                <a class="navbar-item" href="/categories">目录</a>
                 
                 <a class="navbar-item" href="/tags">标签</a>
                 
@@ -127,6 +131,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -140,27 +148,236 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg" alt="32. Longest Valid Parentheses">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-05T13:42:38.321Z">2019-04-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/leetcode/">leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1028 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                32. Longest Valid Parentheses
+            
+        </h1>
+        <div class="content">
+            <h1 id="题目描述：最长有效括号"><a href="#题目描述：最长有效括号" class="headerlink" title="题目描述：最长有效括号"></a>题目描述：<a href="https://leetcode.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">最长有效括号</a></h1><p>给定一个只包含<code>(</code>和<code>)</code>的字符串，找出最长的包含有效的子串的长度。<br><a id="more"></a><br><strong>示例1：</strong></p>
+<blockquote>
+<p>Input:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;”(()”<br>Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</p>
+</blockquote>
+<p><strong>示例2：</strong></p>
+<blockquote>
+<p>Input:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;””)()())””<br>Output: </p>
+</blockquote>
+<h2 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-4"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-4" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</h2><p><strong>分析：</strong></p>
+<ul>
+<li>有效的括号是指任何可以连续可以成对的括号组成的字符串，例如<code>()()()</code>,<code>((()))</code>,<code>()(()())</code>等等均为有效的括号</li>
+<li>遇到类似<code>成对消除</code>的题目，首先就应该考虑到用<code>栈</code>这种数据结构来解决问题</li>
+</ul>
+<hr>
+<p><strong>思路：</strong>既然使用<code>栈</code>来解决这样的问题，那如何记录有效括号的长度呢？为了说得更明白一点，下面以<strong>输入字符串为</strong><code>()((()())(</code>为例子。<br>|  # |  ( |  ) | (       | (      | (       | )       | (       | )       | )       | (       |<br>| —— | —— | —— | —— | —— | —— | —— | —— | —— | —— | —— |<br>| -1 | 0 | 1| 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |</p>
+<ul>
+<li>首先，可以明确一点的是，用栈可以去消除有效的括号<br>消除方法：遍历给定字符串，当满足栈顶元素为<code>(</code>并当前字符为<code>)</code>时，弹出栈顶元素；其他情况时，当前字符入栈；完成此操作后，栈中元素只剩下字符串中<code>-1</code>,<code>2</code>,<code>0</code>,<code>9</code>对应的字符，如下表：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th></th>
+<th></th>
+<th>(</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>(</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>上一步仅仅是消除有效的括号，但是如何和本题求最长有效括号联系在一起呢？<br>其实可以这样想，当我们消除掉有效括号后，栈中剩下的元素包含了有效括号的前面和后面的元素，有效括号前面一个和后面一个元素之间的距离不就是有效括号的长度吗？在这里，就对应于上表 的<code>1-(-1)</code>和<code>8-2</code>,这些长度里面最大的就是要求最长有效括号的长度，即<code>8-2=6</code></li>
+<li>因此，在栈中不仅要存遍历的当前字符，还要存放当前字符对应的索引位置，可以考虑在栈中放一个数组，数组第一个元素为<code>(</code>或<code>)</code>,第二个元素为当前字符对应的索引。</li>
+<li><strong>总结：</strong><ul>
+<li>初始化栈，栈中数组第一个元素随便放，第二个放入-1</li>
+<li>遍历给定字符串</li>
+<li>判断栈顶元素为<code>(</code>并当前字符为<code>)</code>时，弹出栈顶元素，这时候栈顶元素就变成了有效字符串前一个字符了，此时遍历的<code>索引值减去当前栈顶元素对应的索引</code>，每次这样得到的<code>差值</code>求个<code>最大值</code>，此时对应的最大差值即最长有效括号的长度。</li>
+<li>算法的时间复杂度为<code>n</code><br>以下演示遍历过程：<br><code>i=0</code>    </li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>s.charAt(i)</th>
+<th>#</th>
+<th>(</th>
+<th>)</th>
+<th>(</th>
+<th>(</th>
+<th>(</th>
+<th>)</th>
+<th>(</th>
+<th>)</th>
+<th>)</th>
+<th>(</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>此时，栈中元素状态：<br>|arr[0]|  # |<br>| —— | —— |<br>|arr[1] | -1 |<br>不满足栈顶元素为<code>(</code>,当前遍历元素为<code>)</code>,当前遍历元素和对应索引入栈：<br>栈中元素状态为：<br>| arr[0] |  # |  ( |<br>| —— | —— | ——|<br>|arr[1] | -1 | 0 |</p>
+<p><code>i=1</code>  时,满足括号消除条件：<br>栈中元素状态为：<br>| arr[0] |  # |<br>| —— | —— |<br>|arr[1] | -1 |<br><code>max = i-(-1)=2</code><br>…<br>…</p>
+<h2 id="若是理解不够清楚，读者可以自己尝试。"><a href="#若是理解不够清楚，读者可以自己尝试。" class="headerlink" title="若是理解不够清楚，读者可以自己尝试。"></a>若是理解不够清楚，读者可以自己尝试。</h2><p>以此类推，每次栈弹出时，栈顶元素对应的都是有效括号的前一个元素，同时更新<code>max</code>,最终遍历完字符串得到的<code>max</code>即为要返回的结果。代码如下：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestValidParentheses</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;<span class="hljs-keyword">int</span>[]&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;);</span><br><span class="line">        <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">0</span>; </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> temp = s.charAt(i);</span><br><span class="line">            <span class="hljs-keyword">if</span>(!stack.isEmpty() &amp;&amp; stack.peek()[<span class="hljs-number">0</span>]==<span class="hljs-number">40</span> &amp;&amp; temp==<span class="hljs-number">41</span>)&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                cnt = i-stack.peek()[<span class="hljs-number">1</span>];</span><br><span class="line">                <span class="hljs-keyword">if</span>(cnt&gt;max) max=cnt;</span><br><span class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">                stack.push(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;temp,i&#125;);   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(cnt&gt;max) max=cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该解法运行结果对应的时间和空间复杂度如下图：<br><img src="https://s2.ax1x.com/2019/04/05/AWVxu4.png" alt="运行结果"><br><code>要注意的问题</code>：栈中放入的是整型数组，因此遍历得到的字符要转换为整型(对应于temp的<code>自动类型转换</code>)，<code>(</code>的整型值对应于<code>40</code>，<code>)</code>的整型值对应于<code>41</code>，当然，若是不知道他们对应的整型值，也可以用字符去判断，但在push到栈中时，要对temp进行<code>强制类型转换</code>。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/leetcode/">leetcode</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/leetcode/">
-            <span class="level-start">
-                <span class="level-item">leetcode</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.jpg" alt="微信"></div>
+</a>
+
+                
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/03/与所有单词相关联的子串(续)/">
+                <span class="level-item">30.Substring With Concatenation of All Words(续)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'feRmYFNxo9rhpijj5RzPH7i4-gzGzoHsz',
+        app_key: 'MTHuikF1EuKkHohdCDl7jp5q',
+        placeholder: '自古评论出人才，千古绝句随手来。 倘若不是生错时，便可回唐虐李白。'
+    });
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -254,6 +471,29 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述：最长有效括号">
+        <span class="has-mr-6">1</span>
+        <span>题目描述：最长有效括号</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-4">
+        <span class="has-mr-6">1.1</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</span>
+        </a></li><li>
+        <a class="is-flex" href="#若是理解不够清楚，读者可以自己尝试。">
+        <span class="has-mr-6">1.2</span>
+        <span>若是理解不够清楚，读者可以自己尝试。</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -577,7 +817,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="MisterDo" height="28">
+                    <img src="/images/logo.svg" alt="32. Longest Valid Parentheses" height="28">
                 
                 </a>
                 <p class="is-size-7">
