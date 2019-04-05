@@ -16,7 +16,7 @@
 <meta property="og:description" content="题目描述：最长有效括号给定一个只包含(和)的字符串，找出最长的包含有效的子串的长度。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg">
-<meta property="og:updated_time" content="2019-04-05T15:26:06.466Z">
+<meta property="og:updated_time" content="2019-04-05T15:32:23.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="32. Longest Valid Parentheses">
 <meta name="twitter:description" content="题目描述：最长有效括号给定一个只包含(和)的字符串，找出最长的包含有效的子串的长度。">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1028 个字)
+                    7 分钟 读完 (大约 1026 个字)
                 </span>
                 
                 
@@ -194,15 +194,48 @@
 </blockquote>
 <p><strong>示例2：</strong></p>
 <blockquote>
-<p>Input:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;””)()())””<br>Output: </p>
+<p>Input:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;””)()())””<br>Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</p>
 </blockquote>
-<h2 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-4"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-4" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</h2><p><strong>分析：</strong></p>
+<hr>
+<p><strong>分析：</strong></p>
 <ul>
 <li>有效的括号是指任何可以连续可以成对的括号组成的字符串，例如<code>()()()</code>,<code>((()))</code>,<code>()(()())</code>等等均为有效的括号</li>
 <li>遇到类似<code>成对消除</code>的题目，首先就应该考虑到用<code>栈</code>这种数据结构来解决问题</li>
 </ul>
 <hr>
-<p><strong>思路：</strong>既然使用<code>栈</code>来解决这样的问题，那如何记录有效括号的长度呢？为了说得更明白一点，下面以<strong>输入字符串为</strong><code>()((()())(</code>为例子。<br>|  # |  ( |  ) | (       | (      | (       | )       | (       | )       | )       | (       |<br>| —— | —— | —— | —— | —— | —— | —— | —— | —— | —— | —— |<br>| -1 | 0 | 1| 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |</p>
+<p><strong>思路：</strong>既然使用<code>栈</code>来解决这样的问题，那如何记录有效括号的长度呢？为了说得更明白一点，下面以<strong>输入字符串为</strong><code>()((()())(</code>为例子。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>(</th>
+<th>)</th>
+<th>(</th>
+<th>(</th>
+<th>(</th>
+<th>)</th>
+<th>(</th>
+<th>)</th>
+<th>)</th>
+<th>(</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>首先，可以明确一点的是，用栈可以去消除有效的括号<br>消除方法：遍历给定字符串，当满足栈顶元素为<code>(</code>并当前字符为<code>)</code>时，弹出栈顶元素；其他情况时，当前字符入栈；完成此操作后，栈中元素只剩下字符串中<code>-1</code>,<code>2</code>,<code>0</code>,<code>9</code>对应的字符，如下表：</li>
 </ul>
@@ -283,9 +316,56 @@
 </tr>
 </tbody>
 </table>
-<p>此时，栈中元素状态：<br>|arr[0]|  # |<br>| —— | —— |<br>|arr[1] | -1 |<br>不满足栈顶元素为<code>(</code>,当前遍历元素为<code>)</code>,当前遍历元素和对应索引入栈：<br>栈中元素状态为：<br>| arr[0] |  # |  ( |<br>| —— | —— | ——|<br>|arr[1] | -1 | 0 |</p>
-<p><code>i=1</code>  时,满足括号消除条件：<br>栈中元素状态为：<br>| arr[0] |  # |<br>| —— | —— |<br>|arr[1] | -1 |<br><code>max = i-(-1)=2</code><br>…<br>…</p>
-<h2 id="若是理解不够清楚，读者可以自己尝试。"><a href="#若是理解不够清楚，读者可以自己尝试。" class="headerlink" title="若是理解不够清楚，读者可以自己尝试。"></a>若是理解不够清楚，读者可以自己尝试。</h2><p>以此类推，每次栈弹出时，栈顶元素对应的都是有效括号的前一个元素，同时更新<code>max</code>,最终遍历完字符串得到的<code>max</code>即为要返回的结果。代码如下：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestValidParentheses</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;<span class="hljs-keyword">int</span>[]&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;);</span><br><span class="line">        <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">0</span>; </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> temp = s.charAt(i);</span><br><span class="line">            <span class="hljs-keyword">if</span>(!stack.isEmpty() &amp;&amp; stack.peek()[<span class="hljs-number">0</span>]==<span class="hljs-number">40</span> &amp;&amp; temp==<span class="hljs-number">41</span>)&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                cnt = i-stack.peek()[<span class="hljs-number">1</span>];</span><br><span class="line">                <span class="hljs-keyword">if</span>(cnt&gt;max) max=cnt;</span><br><span class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">                stack.push(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;temp,i&#125;);   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(cnt&gt;max) max=cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时，栈中元素状态：</p>
+<table>
+<thead>
+<tr>
+<th>arr[0]</th>
+<th>#</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arr[1]</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>不满足栈顶元素为<code>(</code>,当前遍历元素为<code>)</code>,当前遍历元素和对应索引入栈：<br>栈中元素状态为：</p>
+<table>
+<thead>
+<tr>
+<th>arr[0]</th>
+<th>#</th>
+<th>(</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arr[1]</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><code>i=1</code>  时,满足括号消除条件：<br>栈中元素状态为：</p>
+<table>
+<thead>
+<tr>
+<th>arr[0]</th>
+<th>#</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arr[1]</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p><code>max = i-(-1)=2</code><br>…<br>…<br>以此类推,每次栈弹出时,栈顶元素对应的都是有效括号的前一个元素，同时更新<code>max</code>,最终遍历完字符串得到的<code>max</code>即为要返回的结果。若是理解不够清楚，读者可以自己尝试。</p>
+<hr>
+<p>代码如下：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestValidParentheses</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;<span class="hljs-keyword">int</span>[]&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;);</span><br><span class="line">        <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">0</span>; </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> temp = s.charAt(i);</span><br><span class="line">            <span class="hljs-keyword">if</span>(!stack.isEmpty() &amp;&amp; stack.peek()[<span class="hljs-number">0</span>]==<span class="hljs-number">40</span> &amp;&amp; temp==<span class="hljs-number">41</span>)&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                cnt = i-stack.peek()[<span class="hljs-number">1</span>];</span><br><span class="line">                <span class="hljs-keyword">if</span>(cnt&gt;max) max=cnt;</span><br><span class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">                stack.push(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;temp,i&#125;);   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(cnt&gt;max) max=cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>该解法运行结果对应的时间和空间复杂度如下图：<br><img src="https://s2.ax1x.com/2019/04/05/AWVxu4.png" alt="运行结果"><br><code>要注意的问题</code>：栈中放入的是整型数组，因此遍历得到的字符要转换为整型(对应于temp的<code>自动类型转换</code>)，<code>(</code>的整型值对应于<code>40</code>，<code>)</code>的整型值对应于<code>41</code>，当然，若是不知道他们对应的整型值，也可以用字符去判断，但在push到栈中时，要对temp进行<code>强制类型转换</code>。</p>
 
         </div>
@@ -481,15 +561,7 @@
         <a class="is-flex" href="#题目描述：最长有效括号">
         <span class="has-mr-6">1</span>
         <span>题目描述：最长有效括号</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-4">
-        <span class="has-mr-6">1.1</span>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</span>
-        </a></li><li>
-        <a class="is-flex" href="#若是理解不够清楚，读者可以自己尝试。">
-        <span class="has-mr-6">1.2</span>
-        <span>若是理解不够清楚，读者可以自己尝试。</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
         </div>
     </div>
 </div>
