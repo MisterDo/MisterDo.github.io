@@ -2,24 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>深入理解Java虚拟机 - MisterDo</title>
+<title>哈哈，这就是我 - MisterDo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="jvm的内存模型运行时数据虚拟机栈 方法区">
-<meta name="keywords" content="jvm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="深入理解Java虚拟机">
-<meta property="og:url" content="http://yoursite.com/2019/03/31/我的第一篇篇博客/index.html">
+    <meta name="description" content="教育背景： 普本+211硕   获得荣誉： 全国大学生英语竞赛国家二等奖 高教社杯数学建模竞赛省级二等奖 美国大学生竞赛H奖 蓝桥杯个人小组赛省二   证书： 英语六级 全国计算机等级考试二、三、四级 高级电子工程师   兴趣爱好： 跑步，很喜欢，让我瘦了20斤，哈哈 看书，各种看，文学，科幻，悬疑等 热闹安静的事情都喜欢   自我评价： 学编程，不是热爱，而是：一不讨厌，二钱多(这年头找一个符">
+<meta property="og:type" content="website">
+<meta property="og:title" content="哈哈，这就是我">
+<meta property="og:url" content="http://yoursite.com/about/index.html">
 <meta property="og:site_name" content="MisterDo">
-<meta property="og:description" content="jvm的内存模型运行时数据虚拟机栈 方法区">
+<meta property="og:description" content="教育背景： 普本+211硕   获得荣誉： 全国大学生英语竞赛国家二等奖 高教社杯数学建模竞赛省级二等奖 美国大学生竞赛H奖 蓝桥杯个人小组赛省二   证书： 英语六级 全国计算机等级考试二、三、四级 高级电子工程师   兴趣爱好： 跑步，很喜欢，让我瘦了20斤，哈哈 看书，各种看，文学，科幻，悬疑等 热闹安静的事情都喜欢   自我评价： 学编程，不是热爱，而是：一不讨厌，二钱多(这年头找一个符">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-03-31T15:01:24.997Z">
+<meta property="og:updated_time" content="2019-04-05T05:27:27.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解Java虚拟机">
-<meta name="twitter:description" content="jvm的内存模型运行时数据虚拟机栈 方法区">
+<meta name="twitter:title" content="哈哈，这就是我">
+<meta name="twitter:description" content="教育背景： 普本+211硕   获得荣誉： 全国大学生英语竞赛国家二等奖 高教社杯数学建模竞赛省级二等奖 美国大学生竞赛H奖 蓝桥杯个人小组赛省二   证书： 英语六级 全国计算机等级考试二、三、四级 高级电子工程师   兴趣爱好： 跑步，很喜欢，让我瘦了20斤，哈哈 看书，各种看，文学，科幻，悬疑等 热闹安静的事情都喜欢   自我评价： 学编程，不是热爱，而是：一不讨厌，二钱多(这年头找一个符">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -91,6 +90,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -98,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="深入理解Java虚拟机" height="28">
+                <img src="/images/logo.svg" alt="哈哈，这就是我" height="28">
             
             </a>
         </div>
@@ -114,7 +114,7 @@
                 
                 <a class="navbar-item" href="/tags">标签</a>
                 
-                <a class="navbar-item" href="/about">关于我</a>
+                <a class="navbar-item is-active" href="/about">关于我</a>
                 
             </div>
             
@@ -147,97 +147,48 @@
     
     <div class="card-content article ">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    几秒 读完 (大约 18 个字)
-                </span>
-                
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
-                
-            </div>
-        </div>
-        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                深入理解Java虚拟机
+                哈哈，这就是我
             
         </h1>
         <div class="content">
-            <h1 id="jvm的内存模型"><a href="#jvm的内存模型" class="headerlink" title="jvm的内存模型"></a>jvm的内存模型</h1><h2 id="运行时数据"><a href="#运行时数据" class="headerlink" title="运行时数据"></a>运行时数据</h2><h3 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h3><hr>
-<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><hr>
+            <ul>
+<li>教育背景：<ul>
+<li>普本+211硕</li>
+</ul>
+</li>
+<li>获得荣誉：<ul>
+<li>全国大学生英语竞赛国家二等奖</li>
+<li>高教社杯数学建模竞赛省级二等奖</li>
+<li>美国大学生竞赛H奖</li>
+<li>蓝桥杯个人小组赛省二</li>
+</ul>
+</li>
+<li>证书：<ul>
+<li>英语六级</li>
+<li>全国计算机等级考试二、三、四级</li>
+<li>高级电子工程师</li>
+</ul>
+</li>
+<li>兴趣爱好：<ul>
+<li>跑步，很喜欢，让我瘦了20斤，哈哈</li>
+<li>看书，各种看，文学，科幻，悬疑等</li>
+<li>热闹安静的事情都喜欢</li>
+</ul>
+</li>
+<li>自我评价：<ul>
+<li>学编程，不是热爱，而是：一不讨厌，二钱多(这年头找一个符合这两个条件的工作还是比较难的)</li>
+<li>周边的人都很乐观，我也算乐观吧</li>
+<li>喜欢探索新鲜事物，但不喜欢无脑专研</li>
+<li>人嘛总得培养点吃喝拉撒的坏毛病,要喜欢吃,也算是对生活的一种热爱</li>
+<li>在人际方面感觉比别人少根筋,可能是社会历练不够，总抱着一种孤芳自赏的态度去对待学习和生活肯定是不行的,放低姿态吧，这样才能走的更远</li>
+</ul>
+</li>
+</ul>
 
         </div>
         
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/jvm/">jvm</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/wechat.jpg" alt="微信"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/02/与所有单词相关联的子串/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">30.Substring With Concatenation of All Words</span>
-            </a>
-        </div>
         
         
     </div>
@@ -245,26 +196,9 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'feRmYFNxo9rhpijj5RzPH7i4-gzGzoHsz',
-        app_key: 'MTHuikF1EuKkHohdCDl7jp5q',
-        placeholder: '自古评论出人才，千古绝句随手来。 倘若不是生错时，便可回唐虐李白。'
-    });
-</script>
 
-    </div>
-</div>
+
+
 </div>
                 
 
@@ -308,7 +242,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        2
                     </p>
                 </div>
             </div>
@@ -328,7 +262,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        1
                     </p>
                 </div>
             </div>
@@ -347,27 +281,9 @@
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="http://facebook.com">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Wechat" href="/images/wx.jpg">
                 
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="http://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="http://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
+                <i class="fab fa-weixin"></i>
                 
             </a>
             
@@ -389,23 +305,23 @@
         <ul class="menu-list">
         
             <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                <a class="level is-mobile" href="https://leetcode.com" target="_blank">
                     <span class="level-left">
-                        <span class="level-item">Hexo</span>
+                        <span class="level-item">leetcode官网</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
+                        <span class="level-item tag">leetcode.com</span>
                     </span>
                 </a>
             </li>
         
             <li>
-                <a class="level is-mobile" href="https://github.com/MisterDo" target="_blank">
+                <a class="level is-mobile" href="https://nowcoder.com/ta/sql?query=&asc=true&order=&page=1" target="_blank">
                     <span class="level-left">
-                        <span class="level-item">PPOffice</span>
+                        <span class="level-item">牛客网sql实战</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">github.com</span>
+                        <span class="level-item tag">nowcoder.com</span>
                     </span>
                 </a>
             </li>
@@ -445,7 +361,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a>
+        <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a>
     </div>
 </div>
 
@@ -498,25 +414,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/31/我的第一篇篇博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解Java虚拟机">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time></div>
-                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -540,17 +437,6 @@
             </a>
         </li>
         
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
         </ul>
         </div>
     </div>
@@ -563,13 +449,6 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jvm/">
-                        <span class="tag">jvm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/leetcode/">
@@ -639,25 +518,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/31/我的第一篇篇博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解Java虚拟机">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time></div>
-                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -681,17 +541,6 @@
             </a>
         </li>
         
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
         </ul>
         </div>
     </div>
@@ -704,13 +553,6 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jvm/">
-                        <span class="tag">jvm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/leetcode/">
@@ -736,7 +578,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="深入理解Java虚拟机" height="28">
+                    <img src="/images/logo.svg" alt="哈哈，这就是我" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -916,5 +758,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-</body>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+<!-- <script type="text/javascript" src="../source/js/click.js"></script> -->
+
 </html>

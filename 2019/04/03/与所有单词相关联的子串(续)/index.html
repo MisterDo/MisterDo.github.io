@@ -16,7 +16,7 @@
 <meta property="og:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.上篇我们讨论了本题的一种暴力求解法，本篇接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554402971414&di=75211fabd591229a436e4f1a49f68fc9&imgtype=0&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F8r3O1RpgQeNJ9qWibUQXTGFEYW3VdpsqYIaPF3UmcPjwRXGHRcfaQcVYadaFhSaibeuVF0VLpn3bmdj3ldu1G4icA%2F640%3Fwx_fmt%3Dpng">
-<meta property="og:updated_time" content="2019-04-04T16:24:53.269Z">
+<meta property="og:updated_time" content="2019-04-05T07:23:28.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="30.Substring With Concatenation of All Words(续)">
 <meta name="twitter:description" content="题目描述：与所有单词相关联的子串&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给定一个子串s和一些长度相同的单词组成的字符串数组words.注意：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在s中找出恰好串联words中所有单词的子串的起始位置,中间不能有其他字符，但不要考虑words中单词串联的顺序.上篇我们讨论了本题的一种暴力求解法，本篇接">
@@ -91,6 +91,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -191,75 +192,12 @@
 <p><hr></p>
 <h2 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本方法遍历子串时，同解法一不同之处在于，子串与给定单词字符串数组words的匹配规则不同.解法一是利用子串组成的数组和给定words的排序结果的内容相同来判断子串是否满足要求;而解法二利用了map，首先将words中单词与单词频次转化为key-value的形式，遍历s时得到的子串按同理存于另一个map里面，判断这两个map是否相等，以此决定该子串是否满足要求。</p>
 <p><hr></p>
-<h3 id="java源程序："><a href="#java源程序：" class="headerlink" title="java源程序："></a>java源程序：</h3><pre><code class="java">class Solution {
-    public List&lt;Integer&gt; findSubstring(String s, String[] words) {
-        int sLen = s.length();
-        int unit = words.length;
-        List&lt;Integer&gt; res = new LinkedList&lt;&gt;();
-        if(unit==0 || sLen==0) return res;
-        int wLen = words[0].length();
-        int wordsLen = unit*wLen;
-        Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;();
-
-        for(String word:words){
-            map.put(word,map.getOrDefault(word,0)+1);
-
-        }
-
-        for(int i=0;i&lt;sLen-wordsLen+1;i++){
-            Map&lt;String,Integer&gt; temp = new HashMap&lt;&gt;(map);
-            int j=0;
-            for(;j&lt;unit;j++){
-                String sub = s.substring(i+j*wLen,i+(j+1)*wLen);
-                if(!temp.containsKey(sub)||temp.get(sub)==0) break;
-                temp.put(sub,temp.get(sub)-1);
-
-            }
-            if(j==unit) res.add(i);
-
-        }
-    }
-}
-
-</code></pre>
+<h3 id="java源程序："><a href="#java源程序：" class="headerlink" title="java源程序："></a>java源程序：</h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">findSubstring</span><span class="hljs-params">(String s, String[] words)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> sLen = s.length();</span><br><span class="line">        <span class="hljs-keyword">int</span> unit = words.length;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(unit==<span class="hljs-number">0</span> || sLen==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> res;</span><br><span class="line">        <span class="hljs-keyword">int</span> wLen = words[<span class="hljs-number">0</span>].length();</span><br><span class="line">        <span class="hljs-keyword">int</span> wordsLen = unit*wLen;</span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span>(String word:words)&#123;</span><br><span class="line">        	map.put(word,map.getOrDefault(word,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;sLen-wordsLen+<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">        	Map&lt;String,Integer&gt; temp = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(map);</span><br><span class="line">        	<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;</span><br><span class="line">        	<span class="hljs-keyword">for</span>(;j&lt;unit;j++)&#123;</span><br><span class="line">        		String sub = s.substring(i+j*wLen,i+(j+<span class="hljs-number">1</span>)*wLen);</span><br><span class="line">        		<span class="hljs-keyword">if</span>(!temp.containsKey(sub)||temp.get(sub)==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;</span><br><span class="line">        		temp.put(sub,temp.get(sub)-<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        	&#125;</span><br><span class="line">        	<span class="hljs-keyword">if</span>(j==unit) res.add(i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行时间和空间如下图：<br><img src="https://s2.ax1x.com/2019/04/04/ARuYCt.png" alt="解法二时间空间复杂度"></p>
 <p><hr></p>
 <h2 id="解法三："><a href="#解法三：" class="headerlink" title="解法三："></a>解法三：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解法三与解法二判断子串和words是否匹配的方法一样，但是遍历子串的方式有所不同.在第一层循环中，以一个字符为单位，遍历次数为wLen,在第二层循环中，以wLen为一单位，比较当前子串第一个长度为wLen的单词与其后长度为wLen的单词是否相同，相同就维持未来字符串不变，这样，如果匹配成功的话，索引位置就对应于子串首次出现的位置;如果不同，删除子串第一个单词，加入子串后的一个单词，形成一个新的子串.两层循环下，可以将所有的情况遍历完，重要的是，第二层循环的处理减少了map的频繁操作，从而降低了时间的复杂度。</p>
 <p><hr></p>
-<h3 id="java源程序：-1"><a href="#java源程序：-1" class="headerlink" title="java源程序："></a>java源程序：</h3><pre><code class="java">class Solution {
-    public List&lt;Integer&gt; findSubstring(String s, String[] words) {
-        int sLen = s.length();
-        int unit = words.length;
-        List&lt;Integer&gt; res = new LinkedList&lt;&gt;();
-        if(unit==0 || sLen==0) return res;
-        int wLen = words[0].length();
-        int wordsLen = unit*wLen;
-        Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;();
-        for(String word:words){
-            map.put(word,map.getOrDefault(word,0)+1);
-        }
-        for(int i=0;i&lt;wLen;i++){
-            Map&lt;String,Integer&gt; temp = new HashMap&lt;&gt;();
-            for(int k=0;k&lt;unit&amp;&amp;i+(k+1)*wLen&lt;=sLen;k++){
-                String sub = s.substring(i+k*wLen,i+(k+1)*wLen);
-                temp.put(sub,temp.getOrDefault(sub,0)+1);
-            }
-            if(map.equals(temp)) res.add(i);
-            for(int j=i+wordsLen;j+wLen&lt;=sLen;j+=wLen){
-                String start = s.substring(i,i+wLen);
-                String end = s.substring(j,j+wLen);
-                temp.put(end,temp.getOrDefault(end,0)+1);
-                if(temp.get(start)==1) temp.remove(start);
-                else temp.put(start,temp.get(start)-1);
-                i += wLen;
-                if(map.equals(temp)) res.add(i);
-            }
-            i%=wLen;
-        }
-        return res;
-    }   
-}
-</code></pre>
+<h3 id="java源程序：-1"><a href="#java源程序：-1" class="headerlink" title="java源程序："></a>java源程序：</h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">findSubstring</span><span class="hljs-params">(String s, String[] words)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> sLen = s.length();</span><br><span class="line">        <span class="hljs-keyword">int</span> unit = words.length;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(unit==<span class="hljs-number">0</span> || sLen==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> res;</span><br><span class="line">        <span class="hljs-keyword">int</span> wLen = words[<span class="hljs-number">0</span>].length();</span><br><span class="line">        <span class="hljs-keyword">int</span> wordsLen = unit*wLen;</span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(String word:words)&#123;</span><br><span class="line">            map.put(word,map.getOrDefault(word,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;wLen;i++)&#123;</span><br><span class="line">            Map&lt;String,Integer&gt; temp = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;unit&amp;&amp;i+(k+<span class="hljs-number">1</span>)*wLen&lt;=sLen;k++)&#123;</span><br><span class="line">                String sub = s.substring(i+k*wLen,i+(k+<span class="hljs-number">1</span>)*wLen);</span><br><span class="line">                temp.put(sub,temp.getOrDefault(sub,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.equals(temp)) res.add(i);</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+wordsLen;j+wLen&lt;=sLen;j+=wLen)&#123;</span><br><span class="line">                String start = s.substring(i,i+wLen);</span><br><span class="line">                String end = s.substring(j,j+wLen);</span><br><span class="line">                temp.put(end,temp.getOrDefault(end,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(temp.get(start)==<span class="hljs-number">1</span>) temp.remove(start);</span><br><span class="line">                <span class="hljs-keyword">else</span> temp.put(start,temp.get(start)-<span class="hljs-number">1</span>);</span><br><span class="line">                i += wLen;</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.equals(temp)) res.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">            i%=wLen;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行时间和空间如下图：<br><img src="https://s2.ax1x.com/2019/04/04/ARuNgf.png" alt="解法三时间空间复杂度"></p>
 
         </div>
@@ -394,7 +332,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        2
                     </p>
                 </div>
             </div>
@@ -414,7 +352,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        1
                     </p>
                 </div>
             </div>
@@ -433,27 +371,9 @@
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="http://facebook.com">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Wechat" href="/images/wx.jpg">
                 
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="http://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="http://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
+                <i class="fab fa-weixin"></i>
                 
             </a>
             
@@ -506,23 +426,23 @@
         <ul class="menu-list">
         
             <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                <a class="level is-mobile" href="https://leetcode.com" target="_blank">
                     <span class="level-left">
-                        <span class="level-item">Hexo</span>
+                        <span class="level-item">leetcode官网</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
+                        <span class="level-item tag">leetcode.com</span>
                     </span>
                 </a>
             </li>
         
             <li>
-                <a class="level is-mobile" href="https://github.com/MisterDo" target="_blank">
+                <a class="level is-mobile" href="https://nowcoder.com/ta/sql?query=&asc=true&order=&page=1" target="_blank">
                     <span class="level-left">
-                        <span class="level-item">PPOffice</span>
+                        <span class="level-item">牛客网sql实战</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">github.com</span>
+                        <span class="level-item tag">nowcoder.com</span>
                     </span>
                 </a>
             </li>
@@ -562,7 +482,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a>
+        <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a>
     </div>
 </div>
 
@@ -615,25 +535,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/31/我的第一篇篇博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解Java虚拟机">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time></div>
-                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -657,17 +558,6 @@
             </a>
         </li>
         
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
         </ul>
         </div>
     </div>
@@ -680,13 +570,6 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jvm/">
-                        <span class="tag">jvm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/leetcode/">
@@ -756,25 +639,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/31/我的第一篇篇博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="深入理解Java虚拟机">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-31T14:55:06.965Z">2019-03-31</time></div>
-                    <a href="/2019/03/31/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -798,17 +662,6 @@
             </a>
         </li>
         
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
         </ul>
         </div>
     </div>
@@ -821,13 +674,6 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jvm/">
-                        <span class="tag">jvm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/leetcode/">
@@ -1033,5 +879,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-</body>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+<!-- <script type="text/javascript" src="../source/js/click.js"></script> -->
+
 </html>
