@@ -2,20 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>归档 - MisterDo</title>
+<title>38. Count and Say - MisterDo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="MisterDo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="题目描述：报数报数序列是指一个整数序列，按照顺序进行报数，得到下一个数。其中前五项如下：  1.1 读作一一,所以下一项为112.11读作二一,所以下一项为213.21读作一二一一,所以下一项为12114.1211读作一一一二二一,所以下一项为1112215.111221 读作三一二二一一,所以下一项为312211…   以此类推">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="38. Count and Say">
+<meta property="og:url" content="http://yoursite.com/2019/04/06/报数/index.html">
 <meta property="og:site_name" content="MisterDo">
+<meta property="og:description" content="题目描述：报数报数序列是指一个整数序列，按照顺序进行报数，得到下一个数。其中前五项如下：  1.1 读作一一,所以下一项为112.11读作二一,所以下一项为213.21读作一二一一,所以下一项为12114.1211读作一一一二二一,所以下一项为1112215.111221 读作三一二二一一,所以下一项为312211…   以此类推">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg">
+<meta property="og:updated_time" content="2019-04-06T15:08:28.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MisterDo">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:title" content="38. Count and Say">
+<meta name="twitter:description" content="题目描述：报数报数序列是指一个整数序列，按照顺序进行报数，得到下一个数。其中前五项如下：  1.1 读作一一,所以下一项为112.11读作二一,所以下一项为213.21读作一二一一,所以下一项为12114.1211读作一一一二二一,所以下一项为1112215.111221 读作三一二二一一,所以下一项为312211…   以此类推">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg">
 
 
 
@@ -94,7 +99,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="MisterDo" height="28">
+                <img src="/images/logo.svg" alt="38. Count and Say" height="28">
             
             </a>
         </div>
@@ -104,7 +109,7 @@
                 
                 <a class="navbar-item" href="/">主页</a>
                 
-                <a class="navbar-item is-active" href="/archives">归档</a>
+                <a class="navbar-item" href="/archives">归档</a>
                 
                 <a class="navbar-item" href="/categories">目录</a>
                 
@@ -126,6 +131,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -139,135 +148,169 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg" alt="38. Count and Say">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
         
-<div class="card widget">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-06T15:06:50.801Z">2019-04-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/leetcode/">leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 570 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                38. Count and Say
+            
+        </h1>
+        <div class="content">
+            <h1 id="题目描述：报数"><a href="#题目描述：报数" class="headerlink" title="题目描述：报数"></a>题目描述：<a href="https://leetcode.com/problems/count-and-say/" target="_blank" rel="noopener">报数</a></h1><p>报数序列是指一个整数序列，按照顺序进行报数，得到下一个数。其中前五项如下：</p>
+<blockquote>
+<p>1.1 读作<code>一一</code>,所以下一项为<code>11</code><br>2.11读作<code>二一</code>,所以下一项为<code>21</code><br>3.21读作<code>一二一一</code>,所以下一项为<code>1211</code><br>4.1211读作<code>一一一二二一</code>,所以下一项为<code>111221</code><br>5.111221 读作<code>三一二二一一</code>,所以下一项为<code>312211</code><br>…</p>
+</blockquote>
+<p> 以此类推<br><a id="more"></a><br><strong>示例1：</strong></p>
+<blockquote>
+<p>Input:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;”1”</p>
+</blockquote>
+<p><strong>示例2：</strong></p>
+<blockquote>
+<p>Input:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br>Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;”1211”</p>
+</blockquote>
+<hr>
+<p><strong>分析：</strong></p>
+<ul>
+<li>报数是指一串序列中的某个数</li>
+<li>该序列中某项的值与其前一项有关，规则如题目描述</li>
+</ul>
+<p><strong>思路：</strong>该序列中的某个值是由前一项的<code>报数</code>,因此具有这种回溯性质的题目，我们不妨可以采用递归的方法去做。<br>写递归要明确两点：<code>终止条件</code>和<code>递归体</code></p>
+<ul>
+<li><code>终止条件</code>：当<code>n&lt;=1</code>时,返回<code>1</code>;</li>
+<li><code>递归体</code>：在假定得到前一项的值后，需要对该值进行遍历，遍历时要统计连续相同字符的长度，以<code>该数个数+该数</code>组成新的字符串，便可得到报数。</li>
+</ul>
+<hr>
+<p>java代码：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">countAndSay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n&lt;=<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">"1"</span>;</span><br><span class="line">        String preStr = countAndSay(n-<span class="hljs-number">1</span>);</span><br><span class="line">        String res = <span class="hljs-string">""</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> len = preStr.length();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> k = i;</span><br><span class="line">            <span class="hljs-keyword">while</span>(i+<span class="hljs-number">1</span>&lt;len&amp;&amp;preStr.charAt(i)==preStr.charAt(i+<span class="hljs-number">1</span>))&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res+ (i-k+<span class="hljs-number">1</span>) + preStr.charAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行的时间和空间复杂度如下图：<br><img src="http://upload-images.jianshu.io/upload_images/15448002-8f7160ad384651ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行时间和所用内存"></p>
+<p><strong>总结：</strong></p>
+<ul>
+<li>终止条件写为<code>n&lt;=1</code>，而不是<code>n==1</code>可以使代码更加严谨；</li>
+<li>在该代码之前,确定某个字符的个数所采用的方法，并不是<code>i-k+1</code>,而是每次遍历时，都初始化<code>k=0</code>,然后在<code>while</code>循环体中执行<code>k++</code>，这样做比前一种做法效率更低；</li>
+<li>运用递归解决问题时，切忌追根到底，满足递归的构造规则，即可灵活应用</li>
+<li>递归比较低效，还有其他方法可以代替吗？</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/leetcode/">leetcode</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
                 
-                <a href="/2019/04/06/报数/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg" alt="38. Count and Say">
-                    </p>
-                </a>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-06T15:06:50.801Z">2019-04-06</time>
-                        <a href="/2019/04/06/报数/" class="has-link-black-ter is-size-6">38. Count and Say</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/leetcode/">leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-06T12:08:21.213Z">2019-04-06</time>
-                        <a href="/2019/04/06/我的第一篇篇博客/" class="has-link-black-ter is-size-6">深入理解Java虚拟机</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.jpg" alt="微信"></div>
+</a>
+
                 
-                <a href="/2019/04/05/最长有效括号/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg" alt="32. Longest Valid Parentheses">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-05T13:42:38.321Z">2019-04-05</time>
-                        <a href="/2019/04/05/最长有效括号/" class="has-link-black-ter is-size-6">32. Longest Valid Parentheses</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/leetcode/">leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg" alt="30.Substring With Concatenation of All Words(续)">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-03T15:07:16.076Z">2019-04-03</time>
-                        <a href="/2019/04/03/与所有单词相关联的子串(续)/" class="has-link-black-ter is-size-6">30.Substring With Concatenation of All Words(续)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/leetcode/">leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/04/02/与所有单词相关联的子串/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://s2.ax1x.com/2019/04/05/ARfLq0.jpg" alt="30.Substring With Concatenation of All Words">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-02T15:42:54.706Z">2019-04-02</time>
-                        <a href="/2019/04/02/与所有单词相关联的子串/" class="has-link-black-ter is-size-6">30.Substring With Concatenation of All Words</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/leetcode/">leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
-    
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/06/我的第一篇篇博客/">
+                <span class="level-item">深入理解Java虚拟机</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'feRmYFNxo9rhpijj5RzPH7i4-gzGzoHsz',
+        app_key: 'MTHuikF1EuKkHohdCDl7jp5q',
+        placeholder: '自古评论出人才，千古绝句随手来。 倘若不是生错时，便可回唐虐李白。'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -362,6 +405,21 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述：报数">
+        <span class="has-mr-6">1</span>
+        <span>题目描述：报数</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -775,7 +833,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="MisterDo" height="28">
+                    <img src="/images/logo.svg" alt="38. Count and Say" height="28">
                 
                 </a>
                 <p class="is-size-7">
